@@ -28,4 +28,10 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>JAVA_TOOL</name>
+			<value>file:/home/shin/JAVA_TOOL</value>
+		</variable>
+	</variableList>
 </projectDescription>
