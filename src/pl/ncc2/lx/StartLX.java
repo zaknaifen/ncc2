@@ -18,15 +18,15 @@ public class StartLX {
 	public StartLX() {
 		
 	}
-	private static void ProcessLx(String cmd){
+	public static void ProcessLx(String cmd){
 		
 		try{
-			Process process;
+			//Process process;
 			if(dir != null){return;}
 			else{
-				process = Runtime.getRuntime().exec(LxCommand+cmd);
-				String line;
-				is = new BufferedReader(new InputStreamReader(process.getInputStream()));
+				Process process = Runtime.getRuntime().exec(LxCommand+cmd);
+				//String line;
+				//is = new BufferedReader(new InputStreamReader(process.getInputStream()));
 				
 				
 			}

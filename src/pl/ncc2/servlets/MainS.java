@@ -15,11 +15,23 @@ public class MainS extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		String p1 = request.getParameter("p");
 		PrintWriter out = response.getWriter();
+		if (p1 ==null){
+			
+			try {
+				pl.ncc2.authlog.CheckSQL.CheckOnlineSQL();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		if (p1 !=null){
 			out.print("true");
 		}
 		 
-			
+		//if (p1.equals("lx")){
+		//	pl.ncc2.lx.StartLX.ProcessLx("script1.sh");
+		//}
 			
 			
 		

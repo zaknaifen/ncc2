@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/home/shin/JAVA_TOOL/log4j-1.2.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/shin/JAVA_TOOL/mariadb-java-client-1.5.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
