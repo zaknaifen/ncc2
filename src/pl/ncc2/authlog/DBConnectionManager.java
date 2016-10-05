@@ -5,17 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnectionManager {
-	private String dbURL ="jdbc:mariadb://localhost:3306/ncc2";
-	private String user="jconn";
-	private String pwd="qwopzx,.";
+	private final String dbURL ="jdbc:mariadb://localhost:3306/ncc2";
+	private final String user="jconn";
+	private final String pwd="qwopzx,.";
 	private Connection connection;
 	
-	public DBConnectionManager() throws ClassNotFoundException, SQLException{
+	protected DBConnectionManager() throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		this.connection = DriverManager.getConnection(dbURL, user, pwd);
 	}
 	
-	public Connection getConnection(){
+	protected Connection getConnection(){
 		return this.connection;
 	}
 }

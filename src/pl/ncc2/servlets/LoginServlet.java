@@ -18,13 +18,7 @@ import javax.servlet.http.HttpSession;
 
 
 public class LoginServlet extends HttpServlet {
-	
 
-	
-
-	
-	
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -33,13 +27,27 @@ public class LoginServlet extends HttpServlet {
 		
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
-		System.out.print(name);
-		System.out.print(password);
+		String key=request.getParameter("key");
+		if(pl.ncc2.authlog.Validate.CheckKey(key)){
 		if(pl.ncc2.authlog.Validate.checkUser(name, password))
         {	
 			out.print("Welcome, "+name);
+			out.print(""
+					+ ""
+					+ ""
+					+ ""
+					+ ""
+					+ ""
+					+ ""
+					+ "");
+			
+			
+			out.print("<br><a href=\"ProfileServlet\">Profile</a>");
             //RequestDispatcher rs = request.getRequestDispatcher("Welcome");
 			HttpSession session=request.getSession();
+			
+			session.setAttribute("skey", session );
+			session.setMaxInactiveInterval(10);
 			session.setAttribute("name",name);
 			//rs.forward(request, response);
         }
@@ -48,6 +56,9 @@ public class LoginServlet extends HttpServlet {
            out.println("Username or Password incorrect");
            //RequestDispatcher rs = request.getRequestDispatcher("index.html");
            //rs.include(request, response);
+        }}
+		else{
+			out.println("Key validation failed");
         }
 		/*
 		if(password.equals("admin123")){

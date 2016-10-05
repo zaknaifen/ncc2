@@ -15,12 +15,18 @@ public class ProfileServlet extends HttpServlet {
 		request.getRequestDispatcher("link.html").include(request, response);
 		
 		HttpSession session=request.getSession(false);
-		if(session!=null){
-		String name=(String)session.getAttribute("name");
 		
+		if(session!=null){
+			
+		String name=(String)session.getAttribute("name");
+			if (name==null){request.getRequestDispatcher("login.html").include(request, response);
+			}
+			else {
 		out.print("Hello, "+name+" Welcome to Profile");
 		out.print("test");
 		
+		
+			}
 		}
 		else{
 			out.print("Please login first");
