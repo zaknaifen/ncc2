@@ -17,7 +17,9 @@ public class ProfileServlet extends HttpServlet {
 		HttpSession session=request.getSession(false);
 		
 		if(session!=null){
-			
+		String skey=session.getId();
+		
+				pl.ncc2.authlog.Validate.InsertSession(skey);
 		String name=(String)session.getAttribute("name");
 			if (name==null){request.getRequestDispatcher("login.html").include(request, response);
 			}

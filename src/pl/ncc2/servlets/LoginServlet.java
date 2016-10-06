@@ -31,22 +31,14 @@ public class LoginServlet extends HttpServlet {
 		if(pl.ncc2.authlog.Validate.CheckKey(key)){
 		if(pl.ncc2.authlog.Validate.checkUser(name, password))
         {	
-			out.print("Welcome, "+name);
-			out.print(""
-					+ ""
-					+ ""
-					+ ""
-					+ ""
-					+ ""
-					+ ""
-					+ "");
 			
 			
-			out.print("<br><a href=\"ProfileServlet\">Profile</a>");
-            //RequestDispatcher rs = request.getRequestDispatcher("Welcome");
+		//	out.print("<br><a href=\"ProfileServlet\">Profile</a>");
+          //second vlidation 
 			HttpSession session=request.getSession();
 			
-			session.setAttribute("skey", session );
+			
+			
 			session.setMaxInactiveInterval(10);
 			session.setAttribute("name",name);
 			//rs.forward(request, response);

@@ -18,16 +18,16 @@ public class StartLX {
 	public StartLX() {
 		
 	}
-	public static void ProcessLx(String cmd){
-		
+	public static boolean ProcessLx(String cmd){
+		boolean cst= false;
 		try{
 			//Process process;
-			if(dir != null){return;}
+			if(dir != null){return false;}
 			else{
 				Process process = Runtime.getRuntime().exec(LxCommand+cmd);
 				//String line;
 				//is = new BufferedReader(new InputStreamReader(process.getInputStream()));
-				
+				cst = true;
 				
 			}
 				
@@ -39,7 +39,7 @@ public class StartLX {
 		}
 		
 		
-		
+		return cst;
 	}
 	
 	

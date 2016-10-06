@@ -51,28 +51,31 @@ public class Validate
     	 return st;
      }
      
-     public static void InsertSession(String key){
+     public static boolean InsertSession(String key){
+    	 boolean st = false;
     	 try {
  	 		Class.forName("org.mariadb.jdbc.Driver");
  	 		Connection con=DriverManager.getConnection(pl.ncc2.authlog.Sql.dbURL(),pl.ncc2.authlog.Sql.dbUser(),pl.ncc2.authlog.Sql.dbPwd());
- 	         PreparedStatement ps=con.prepareStatement("insert into skey(ses) values(?)");
+ 	         PreparedStatement ps=con.prepareStatement("insert into skey(ses,date) values(?,sysdate() )");
  	         
- 	         String day_now= new SimpleDateFormat("dd").format(Calendar.getInstance().getTime());
+ 	          
+ 	         
+ 	         ps.setString(1, key);
+ 	         
+ 	         ps.executeUpdate();
+ 	         if(ps.executeUpdate()==1){
+ 	        	 st = true;
+ 	         }
  	        
- 	         day_now = day_now.replaceFirst("^0*", "");
  	         
- 	         ps.setString(1, day_now);
- 	         ps.setString(2, key);
- 	         
- 	         ResultSet rs =ps.executeQuery();
- 	 
- 	         st = rs.next();
  	         con.close();
  	 	}catch(Exception e) {
  	 		e.printStackTrace();
  	 	}
- 
+    	 return st;
      }
-     
-     
+   public void SValidation()
+   {
+	   
+   }
 }
