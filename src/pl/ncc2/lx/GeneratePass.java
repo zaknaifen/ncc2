@@ -73,14 +73,14 @@ public class GeneratePass  {
  	 		Class.forName("org.mariadb.jdbc.Driver");
  	 		Connection con=DriverManager.getConnection(pl.ncc2.authlog.Sql.dbURL(),pl.ncc2.authlog.Sql.dbUser(),pl.ncc2.authlog.Sql.dbPwd());
  	         
- 	 		PreparedStatement ps=con.prepareStatement("select value from temp_key where username=? order by value desc limit 1");
+ 	 		PreparedStatement ps=con.prepareStatement("select tkey,KID from temp_keys where username=? order by KID desc limit 1");
  	        ps.setString(1, username);
  	 		ResultSet rs =ps.executeQuery();
  	    	 
 	         while(rs.next())
 	         {
-	        	 retp=rs.getString("value");
-	        	 
+	        	 retp=rs.getString("tkey");
+	        	 return retp;
 	         }
  	        
  	         
@@ -95,12 +95,15 @@ public class GeneratePass  {
 	public static boolean ValidateOTP(String username, String input)
 	{
 		boolean votp = false;
+		System.out.println(username);
+		System.out.println(input);
+		System.out.println("::"+GetPass(username));
 			if(input.equals(GetPass(username)))
 					{
 					votp=true;
 					}
 			
-				return votp;
+			return votp;	
 			
 		
 		
