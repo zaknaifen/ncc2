@@ -24,31 +24,38 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		request.getRequestDispatcher("link.html").include(request, response);
-		
+		String otp=request.getParameter("otp");
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
 		String key=request.getParameter("key");
+		HttpSession session=request.getSession();
+		
 		if(pl.ncc2.authlog.Validate.CheckKey(key)){
-		if(pl.ncc2.authlog.Validate.checkUser(name, password))
-        {	
 			
-			
-		//	out.print("<br><a href=\"ProfileServlet\">Profile</a>");
-          //second vlidation 
-			HttpSession session=request.getSession();
-			
-			
-			
-			session.setMaxInactiveInterval(10);
-			session.setAttribute("name",name);
-			//rs.forward(request, response);
-        }
-        else
-        {
-           out.println("Username or Password incorrect");
-           //RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           //rs.include(request, response);
-        }}
+			if(pl.ncc2.lx.GeneratePass.ValidateOTP(name, otp))	
+				{
+					if(pl.ncc2.authlog.Validate.checkUser(name, password))
+						{	
+							out.println("<a href=\"OTP.jsp\">Profile2</a>");
+							out.print("<br><a href=\"ProfileServlet\">Profile</a>");
+							//HttpSession session=request.getSession();
+							session.setMaxInactiveInterval(10);
+							session.setAttribute("name",name);
+							//rs.forward(request, response);
+						}
+					else
+					{
+						out.println("Username or Password incorrect");
+						//RequestDispatcher rs = request.getRequestDispatcher("index.html");
+						//rs.include(request, response);
+					}
+		
+				} else {
+					session.invalidate();
+					out.println("otp validation failed");
+					}
+			}
+		
 		else{
 			out.println("Key validation failed");
         }

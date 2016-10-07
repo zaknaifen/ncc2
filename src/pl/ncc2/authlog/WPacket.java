@@ -19,14 +19,14 @@ public class WPacket {
 	
 	private static void GetHost(String host)
 	{
-		  Class.forName("org.mariadb.jdbc.Driver");
-	         Connection con=DriverManager.getConnection(pl.ncc2.authlog.Sql.dbURL(),pl.ncc2.authlog.Sql.dbUser(),pl.ncc2.authlog.Sql.dbPwd());
-	         PreparedStatement ps =con.prepareStatement("select * from users where login=? and pass=?");
+		//  Class.forName("org.mariadb.jdbc.Driver");
+	   //      Connection con=DriverManager.getConnection(pl.ncc2.authlog.Sql.dbURL(),pl.ncc2.authlog.Sql.dbUser(),pl.ncc2.authlog.Sql.dbPwd());
+	    //     PreparedStatement ps =con.prepareStatement("select * from users where login=? and pass=?");
 	   //      ps.setString(1, login);
 	   //      ps.setString(2, pass);
-	         ResultSet rs =ps.executeQuery();
-	         st = rs.next();
-	         con.close();
+	   //      ResultSet rs =ps.executeQuery();
+	     //    boolean st = rs.next();
+	      //   con.close();
 	}
 	
 	private static void WPacketSend(String ip, String mac)
